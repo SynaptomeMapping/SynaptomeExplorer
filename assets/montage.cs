@@ -156,7 +156,7 @@ void main() {
     */
     bool parent_ok = (g_MaskParent >> (g_MaskLevelBitOffset + g_MaskLevelBitCount)) == (maskVal >> (g_MaskLevelBitOffset + g_MaskLevelBitCount));//(g_MaskParent & maskVal) == g_MaskParent;
     uint maskIndexInLevel = (maskVal >> g_MaskLevelBitOffset) & ((1u << g_MaskLevelBitCount)-1u);
-    float maskMult = float(parent_ok) * float(maskIndexInLevel > 0u ) * float( (g_MaskLevelSelectionMask & (1<<(maskIndexInLevel-1u))) > 0u ) * (sin(g_TotalTime*6.5)*3.0);
+    float maskMult = float(parent_ok) * float(maskIndexInLevel > 0u ) * float( (g_MaskLevelSelectionMask & (1<<(maskIndexInLevel-1u))) > 0u ) * (-1.0);//(sin(g_TotalTime*6.5)*3.0);
     float mask_intensity = (zval + g_Minimap*(1.0 - zval))*maskMult;
     color.xyz *= 1.0 - mask_intensity * 2.0;
 
